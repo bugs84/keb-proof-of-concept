@@ -2,12 +2,20 @@ package cz.vondr.keb.at
 
 import kotlin.reflect.KClass
 
+fun main(args: Array<String>) {
+    println("Start")
+    val myTest = MyTest()
+    myTest.firstTest()
+    myTest.secondImprovedTest()
+}
+
+
+
 open class BasePage {
     open fun at(): Boolean {
         return true
     }
 }
-
 
 class FirstPage : BasePage() {
     fun firstMethod() {
@@ -82,12 +90,4 @@ class MyTest : TestBase() {
     }
 
 
-}
-
-
-fun main(args: Array<String>) {
-    println("Start")
-    val myTest = MyTest()
-    myTest.firstTest()
-    myTest.secondImprovedTest()
 }
