@@ -56,7 +56,7 @@ class SecondPage : BasePage() {
 open class TestBase {
     lateinit var page: Any
 
-    fun <P : BasePage> at(pageClass: KClass<P>, body: (P) -> Unit = {}) {
+    fun <P : BasePage> at(pageClass: KClass<P>, body: P.() -> Unit = {}) {
         val page = createInstance(pageClass)
         validateAtPage(page, pageClass)
         body.invoke(page)
@@ -97,28 +97,28 @@ class MyTest : TestBase() {
     fun secondImprovedTest() {
 
 
-        at(FirstPage::class) { page ->
-            page.firstMethod()
-            println(page.button1.invoke())
-        }
-
-        at(SecondPage::class) { secondPage ->
-            secondPage.secondMethod()
-
-            println("BUTTON 2")
-            println(secondPage.button2)
-            println(secondPage.button2)
-            println("BUTTON 3")
-            println(secondPage.button3)
-            println(secondPage.button3)
+        at(FirstPage::class) {
+            firstMethod()
+            println(button1.invoke())
         }
 
         at(SecondPage::class) {
-            //TODO kez by slo nadefinovat, ze to neni it, ale page
-            it.secondMethod()
+            secondMethod()
+
+            println("BUTTON 2")
+            println(button2)
+            println(button2)
+            println("BUTTON 3")
+            println(button3)
+            println(button3)
+        }
+
+        at(SecondPage::class) {
+            secondMethod()
         }
 
         at(SecondPage::class) // just validate, that i am on correct page
+
     }
 
 
