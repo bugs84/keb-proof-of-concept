@@ -82,7 +82,7 @@ class MyTest : TestBase() {
             if (page is FirstPage) {
                 page.firstMethod()
             }
-        }.invoke()
+        }()
 
         page = SecondPage();
         {
@@ -90,7 +90,7 @@ class MyTest : TestBase() {
             if (page is SecondPage) {
                 page.secondMethod()
             }
-        }.invoke()
+        }()
 
     }
 
@@ -99,7 +99,7 @@ class MyTest : TestBase() {
 
         at(FirstPage::class) {
             firstMethod()
-            println(button1.invoke())
+            println(button1())
         }
 
         at(SecondPage::class) {
